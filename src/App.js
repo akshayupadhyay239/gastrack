@@ -24,6 +24,18 @@ class App extends React.Component {
         })
   }
 
+  clickTest = ()=>{
+    //https://www.gasnow.org/api/v3/gas/data?utm_source=web
+    //https://ethgas.watch/.netlify/functions/gas this does't let you use data
+    this.setState({ isloading:true })
+    fetch("https://www.gasnow.org/api/v3/gas/data?utm_source=web")
+      .then(response => response.json())
+        .then(data => {
+          console.log(data)
+        })
+        this.setState({ isloading:false })
+  }
+
   render(){
     return (
       <div className="App">
@@ -45,8 +57,9 @@ class App extends React.Component {
             <p>under 5 minute</p>
           </div>
         </div>
-        {this.state.isloading?<h1>...Loading data</h1>:<h1></h1>}
+        {this.state.isloading?<h1>...Loading data</h1>:<h1>latest gas prices</h1>}
         <button onClick={this.clickHandler}>Get prices</button>
+        <button onClick={this.clickTest}>test</button>
       </div>
     );
   }

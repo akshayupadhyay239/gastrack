@@ -7,10 +7,12 @@ class App extends React.Component {
     gfastest:0,
     gfast:0,
     gaverage:0,
-    isloading:false
+    isloading:false,
+    email:"",
+
   }
 
-  componentDidMount = () =>{
+  componentDidMount = () => {
     this.clickHandler()
   }
 
@@ -28,7 +30,7 @@ class App extends React.Component {
         })
   }*/
 
-  clickHandler = ()=>{
+  clickHandler = () => {
     //https://www.gasnow.org/api/v3/gas/data?utm_source=web
     //https://ethgas.watch/.netlify/functions/gas this does't let you use data
     this.setState({ isloading:true })
@@ -51,7 +53,7 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-        <h1>GasTrack</h1>
+        <h1 className="logo">GasTrack</h1>
         <div className="prices">
           <div className="fastest">
             <h2>Fastest</h2>
@@ -70,7 +72,14 @@ class App extends React.Component {
           </div>
         </div>
         {this.state.isloading?<h1>...Loading data</h1>:<h1>latest gas prices</h1>}
-        <button onClick={this.clickHandler}>Get prices</button>
+        <button className="sec-btn" onClick={this.clickHandler}><p className="btn-txt">Get prices</p></button>
+        <div className="form">
+          <div className="fields">
+            <input name="email" onChange={this.changeHandler} placeholder="your email"/>
+            <input name="tprice" onChange={this.changeHandler} placeholder="price in Gwei"/>
+          </div>
+          <button className="primary-btn"><p className="btn-txt">Alert me</p></button>
+        </div>
       </div>
     );
   }

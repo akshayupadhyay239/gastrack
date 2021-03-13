@@ -40,9 +40,14 @@
 .fastest,.fast,.average{
   padding: 10px;
   margin: 10px auto;
-  max-width: 200px;
+  max-width: 500px;
+  min-width: 200px;
   box-shadow: -1px 1px 1px 2px rgba(0, 0, 0, 0.596);
   border-radius: 10px;
+}
+
+.prices{
+  display: flex;
 }
 
 button{
